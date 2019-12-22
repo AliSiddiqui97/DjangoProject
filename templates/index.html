@@ -1,5 +1,5 @@
 {% load static %}
-
+{% static "images" as baseUrl %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,14 +28,13 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-							<div class="logo"><a href="{% static 'index.html'%}">Travello</a></div>
+							<div class="logo"><a href="{% static 'index.html'%}">PhotoGallery</a></div>
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
 									<li class="active"><a href="{% static 'index.html'%}">Home</a></li>
-									<li><a href="{% static 'about.html'%}">About us</a></li>
-									<li><a href="#">Services</a></li>
-									<li><a href="{% static 'news.html'%}">News</a></li>
 									<li><a href="{% static 'contact.html'%}">Contact</a></li>
+									<li><a href="accounts/register">Register</a></li>
+									<li><a href="accounts/login">login</a></li>
 								</ul>
 							</nav>
 							<div class="header_phone ml-auto">Call us: 00-56 445 678 33</div>
@@ -67,7 +66,7 @@
 
 	<div class="menu">
 		<div class="menu_header d-flex flex-row align-items-center justify-content-start">
-			<div class="menu_logo"><a href="{% static 'index.html'%}">Travello</a></div>
+			<div class="menu_logo"><a href="{% static 'index.html'%}">PhotoGallery</a></div>
 			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
 		</div>
 		<div class="menu_content">
@@ -102,7 +101,7 @@
 				
 				<!-- Slide -->
 				<div class="owl-item">
-					<div class="background_image" style="{% static 'background-image:url('static/images/home_slider.jpg')}"></div>
+					<div class="background_image" style="background-image:url({% static '/images/home_slider.jpg' %})"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
@@ -118,7 +117,7 @@
 
 				<!-- Slide -->
 				<div class="owl-item">
-					<div class="background_image" style="{% static 'background-image:url(images/home_slider.jpg)'%}"></div>
+					<div class="background_image" style="background-image:url({% static '/images/home_slider.jpg' %})"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
@@ -134,7 +133,7 @@
 
 				<!-- Slide -->
 				<div class="owl-item">
-					<div class="background_image" style="{% static 'background-image:url(images/home_slider.jpg)'%}"></div>
+					<div class="background_image" style="background-image:url({% static '/images/home_slider.jpg' %})"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
@@ -200,7 +199,7 @@
 								<div class="intro_item d-flex flex-row align-items-end justify-content-start">
 									<div class="intro_icon"><img src="{% static 'images/beach.svg'%}" alt=""></div>
 									<div class="intro_content">
-										<div class="intro_title">Top Destinations</div>
+										<div class="intro_title">Top </div>
 										<div class="intro_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
 									</div>
 								</div>
@@ -241,87 +240,33 @@
 		<div class="container">
 			<div class="row">
 				<div class="col text-center">
-					<div class="section_subtitle">simply amazing places</div>
-					<div class="section_title"><h2>Popular Destinations</h2></div>
+					<div class="section_subtitle">simply amazing shoots</div>
+					<div class="section_title"><h2>Popular </h2></div>
 				</div>
 			</div>
 			<div class="row destinations_row">
 				<div class="col">
 					<div class="destinations_container item_grid">
 
+						{% for dest in dest %}
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{% static 'images/destination_1.jpg'%}" alt="">
+								<img src="{{dest.img.url}}" alt="">
+								{% if dest.offer %}	
 								<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
+								{% endif %}
 							</div>
 							<div class="destination_content">
-								<div class="destination_title"><a href="{% static 'destinations.html'%}">Bali</a></div>
-								<div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-								<div class="destination_price">From $679</div>
+								<div class="destination_title"><a href="{% static 'destinations.html'%}">{{dest.name}}</a></div>
+								<div class="destination_subtitle"><p>{{dest.desc}}hhhhhhh</p></div>
+								<div class="destination_price"> {{dest.price}} </div>
 							</div>
 						</div>
+						{% endfor %}
 
-						<!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/destination_2.jpg'%}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="{% static 'destinations.html'%}">Indonesia</a></div>
-								<div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-								<div class="destination_price">From $679</div>
-							</div>
-						</div>
 
-						<!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/destination_3.jpg'%}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="{% static 'destinations.html'%}">San Francisco</a></div>
-								<div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-								<div class="destination_price">From $679</div>
-							</div>
-						</div>
-
-						<!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/destination_4.jpg'%}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="{% static 'destinations.html'%}">Paris</a></div>
-								<div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-								<div class="destination_price">From $679</div>
-							</div>
-						</div>
-
-						<!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/destination_5.jpg'%}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="{% static 'destinations.html'%}">Phi Phi Island</a></div>
-								<div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-								<div class="destination_price">From $679</div>
-							</div>
-						</div>
-
-						<!-- Destination -->
-						<div class="destination item">
-							<div class="destination_image">
-								<img src="{% static 'images/destination_6.jpg'%}" alt="">
-							</div>
-							<div class="destination_content">
-								<div class="destination_title"><a href="{% static 'destinations.html'%}">Mykonos</a></div>
-								<div class="destination_subtitle"><p>Nulla pretium tincidunt felis, nec.</p></div>
-								<div class="destination_price">From $679</div>
-							</div>
-						</div>
-
+						
 					</div>
 				</div>
 			</div>
@@ -345,39 +290,23 @@
 					<!-- Testimonials Slider -->
 					<div class="testimonials_slider_container">
 						<div class="owl-carousel owl-theme testimonials_slider">
-							
-							<!-- Slide -->
+
+
+							{% for testimonial in testimonial%}
+							<!-- Slide -->	
 							<div class="owl-item text-center">
-								<div class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur quis vehicula odio.</div>
+								<img class="testimonial" src="{{testimonial.img.url}}"  style="width:100px;height:100px;border-radius:70%;" />
+								<div class="testimonial">{{testimonial.testimony}}</div> 
 								<div class="testimonial_author">
 									<div class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
-										<div>john turner,</div>
-										<div>client</div>
+										<div>{{testimonial.name}},</div>
+										<div>{{testimonial.designation}}</div>
 									</div>
 								</div>
 							</div>
 
-							<!-- Slide -->
-							<div class="owl-item text-center">
-								<div class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur quis vehicula odio.</div>
-								<div class="testimonial_author">
-									<div class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
-										<div>john turner,</div>
-										<div>client</div>
-									</div>
-								</div>
-							</div>
+							{% endfor %}
 
-							<!-- Slide -->
-							<div class="owl-item text-center">
-								<div class="testimonial">Lorem ipsum dolor sit amet, consectetur adipiscing elit. lobortis dolor. Cras placerat lectus a posuere aliquet. Curabitur quis vehicula odio.</div>
-								<div class="testimonial_author">
-									<div class="testimonial_author_content d-flex flex-row align-items-end justify-content-start">
-										<div>john turner,</div>
-										<div>client</div>
-									</div>
-								</div>
-							</div>
 
 						</div>
 					</div>
@@ -401,65 +330,29 @@
 				<div class="col-xl-8">
 					<div class="news_container">
 						
+						{% for news in news %}
 						<!-- News Post -->
 						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="{% static 'images/news_1.jpg'%}" alt=""></div>
+							<div class="news_post_image"><img src="{{news.img.url}}" alt=""></div>
 							<div class="news_post_content">
 								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>02</div>
-									<div>june</div>
+									<div>{{news.day}}</div>
+									<div>{{news.month}}</div>
 								</div>
-								<div class="news_post_title"><a href="#">Best tips to travel light</a></div>
+								<div class="news_post_title"><a href="#">{{news.title}}</a></div>
 								<div class="news_post_category">
 									<ul>
-										<li><a href="#">lifestyle & travel</a></li>
+										<li><a href="#">{{title.category}}</a></li>
 									</ul>
 								</div>
 								<div class="news_post_text">
-									<p>Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo. Vivamus massa.Tempor massa et laoreet.</p>
+									<p> {{news.desc}}</p>
 								</div>
 							</div>
 						</div>
+						{% endfor %}
 
-						<!-- News Post -->
-						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="{% static 'images/news_2.jpg'%}" alt=""></div>
-							<div class="news_post_content">
-								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>01</div>
-									<div>june</div>
-								</div>
-								<div class="news_post_title"><a href="#">Best tips to travel light</a></div>
-								<div class="news_post_category">
-									<ul>
-										<li><a href="#">lifestyle & travel</a></li>
-									</ul>
-								</div>
-								<div class="news_post_text">
-									<p>Tempor massa et laoreet malesuada. Pellentesque sit amet elementum ccumsan sit amet mattis eget, tristique at leo.</p>
-								</div>
-							</div>
-						</div>
 
-						<!-- News Post -->
-						<div class="news_post d-flex flex-md-row flex-column align-items-start justify-content-start">
-							<div class="news_post_image"><img src="{% static 'images/news_3.jpg'%}" alt=""></div>
-							<div class="news_post_content">
-								<div class="news_post_date d-flex flex-row align-items-end justify-content-start">
-									<div>29</div>
-									<div>may</div>
-								</div>
-								<div class="news_post_title"><a href="#">Best tips to travel light</a></div>
-								<div class="news_post_category">
-									<ul>
-										<li><a href="#">lifestyle & travel</a></li>
-									</ul>
-								</div>
-								<div class="news_post_text">
-									<p>Vivamus massa.Tempor massa et laoreet malesuada. Aliquam nulla nisl, accumsan sit amet mattis.</p>
-								</div>
-							</div>
-						</div>
 
 					</div>
 				</div>
